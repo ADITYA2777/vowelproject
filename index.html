@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vowel Counter</title>
+    <link rel="stylesheet" href="./index.css">        
+</head>
+<body>
+     <div id="container">
+        <h1>Vowel Counter</h1>
+        <input type="text"  id="input">
+        <button id="button">calculate</button>
+        <div id="message"></div>
+     </div>
+
+     <script>
+        let displayMessage = document.getElementById("message")
+        let button = document.getElementById("button")
+        let counter = 0
+        let Input = document.getElementById("input")
+
+        function removeAfterSettime() {
+            location.reload()
+        }
+        button.addEventListener("click",()=>{
+         let input = document.getElementById("input").value.toLowerCase()
+         let split = input.split("")
+         Input.value = ""
+
+         for (let i = 0; i<split.length; i++) {
+            if ( split[i]== 'a'|| split[i]== 'e'|| split[i]== 'i'|| split[i]== 'o'|| split[i]== 'u') {
+                counter++
+            }if (counter > 1) {
+                displayMessage.innerHTML = `'${input}'has ${counter}vowels`
+            }else{
+                displayMessage.innerHTML = `'${input}'has ${counter}vowel`
+            }
+            let timeout = setTimeout(removeAfterSettime,2500)
+         }
+        })
+     </script>
+</body>
+</html>
